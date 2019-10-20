@@ -32,7 +32,9 @@
 	 ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes nil)
  '(menu-bar-mode t)
- '(package-selected-packages (quote (evil helm projectile))))
+ '(package-selected-packages
+	 (quote
+		(terraform-mode json-mode yaml-mode magit multi-term evil helm projectile))))
 
 (require 'projectile)
 (define-key projectile-mode-map (kbd "C-q p") 'projectile-command-map)
@@ -47,6 +49,12 @@
 (setq projectile-completion-system 'helm)
 (setq-default tab-width 2)
 
+(defun split-and-follow-vertically ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
 
 (custom-set-faces
@@ -54,4 +62,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(magit-diff-added ((t (:background "color-17" :foreground "brightyellow"))))
+ '(magit-diff-added-highlight ((t (:background "color-17" :foreground "brightyellow"))))
+ '(magit-diff-context-highlight ((t (:background "color-234" :foreground "brightblack"))))
+ '(magit-diff-file-heading-highlight ((t (:inherit nil :background "color-22"))))
+ '(magit-diff-hunk-heading-highlight ((t (:background "grey80" :foreground "grey30"))))
+ '(magit-diff-removed ((t (:background "red" :foreground "brightwhite"))))
+ '(magit-diff-removed-highlight ((t (:background "red" :foreground "brightwhite"))))
+ '(magit-section-highlight ((t (:background "color-58")))))
