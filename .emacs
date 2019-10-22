@@ -48,6 +48,10 @@
 (setq projectile-project-search-path '("/opt/lb/playground" "/opt/lb/tools"))
 (setq projectile-completion-system 'helm)
 (setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq-default evil-shift-width 2) 
+(setq-default python-indent-offset 4) 
+
 
 (defun split-and-follow-vertically ()
   (interactive)
