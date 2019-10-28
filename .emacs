@@ -52,6 +52,7 @@
 (setq-default tab-stop-list ()) 
 (setq-default evil-shift-width 2) 
 (setq-default python-indent-offset 4) 
+(global-set-key (kbd "C-x g") 'magit-status)
 
 
 (defun split-and-follow-vertically ()
