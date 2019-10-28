@@ -11,12 +11,12 @@
 (require 'evil)
 (evil-mode 1)
 
-(global-display-line-numbers-mode)
+;;(global-display-line-numbers-mode)
 ;;(setq display-line-numbers 'relative)
-(setq-default display-line-numbers-type 'visual
-              display-line-numbers-current-absolute t
-              display-line-numbers-width 4
-              display-line-numbers-widen t)
+;;(setq-default display-line-numbers-type 'visual
+;;              display-line-numbers-current-absolute t
+;;              display-line-numbers-width 4
+;;              display-line-numbers-widen t)
 
 (setq ring-bell-function 'ignore)
 
