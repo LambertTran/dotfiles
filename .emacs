@@ -46,9 +46,10 @@
 (setq-default evil-shift-width 2) 
 (add-hook 'python-mode-hook
       (lambda ()
-        (setq indent-tabs-mode t)
+        (setq indent-tabs-mode nil)
         (setq tab-width 4)
         (setq python-indent-offset 4)))
+
 (global-set-key (kbd "C-x g") 'magit-status)
 
 
