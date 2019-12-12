@@ -11,13 +11,6 @@
 (require 'evil)
 (evil-mode 1)
 
-;;(global-display-line-numbers-mode)
-;;(setq display-line-numbers 'relative)
-;;(setq-default display-line-numbers-type 'visual
-;;              display-line-numbers-current-absolute t
-;;              display-line-numbers-width 4
-;;              display-line-numbers-widen t)
-
 (setq ring-bell-function 'ignore)
 
 ;; Projectile
@@ -27,14 +20,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
-	 [default default default italic underline success warning error])
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
-	 ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes nil)
  '(menu-bar-mode t)
  '(package-selected-packages
-	 (quote
-		(terraform-mode json-mode yaml-mode magit multi-term evil helm projectile))))
+   (quote
+    (markdown-mode groovy-mode terraform-mode json-mode yaml-mode magit multi-term evil helm projectile))))
 
 (require 'projectile)
 (define-key projectile-mode-map (kbd "C-q p") 'projectile-command-map)
