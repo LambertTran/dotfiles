@@ -39,10 +39,10 @@
                     :background "green"
                     :foreground "black")
 (setq projectile-completion-system 'helm)
-(setq-default tab-width 2)
+(setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-stop-list ()) 
-(setq-default evil-shift-width 2) 
+(setq-default evil-shift-width 4) 
 (add-hook 'python-mode-hook
       (lambda ()
         (setq indent-tabs-mode nil)
