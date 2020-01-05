@@ -27,7 +27,7 @@
  '(menu-bar-mode t)
  '(package-selected-packages
    (quote
-    (markdown-mode groovy-mode terraform-mode json-mode yaml-mode magit multi-term evil helm projectile))))
+    (dockerfile-mode markdown-mode groovy-mode terraform-mode json-mode yaml-mode magit multi-term evil helm projectile))))
 
 (require 'projectile)
 (define-key projectile-mode-map (kbd "C-q p") 'projectile-command-map)
@@ -48,6 +48,8 @@
         (setq indent-tabs-mode nil)
         (setq tab-width 4)
         (setq python-indent-offset 4)))
+
+(setq backup-directory-alist `(("." . "~/.saves")))
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
