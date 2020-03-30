@@ -35,7 +35,7 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
-(set-frame-font "Hack 12" nil t)
+(set-frame-font "Hack 14" nil t)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 
@@ -69,7 +69,7 @@
 (setq-default evil-shift-width 2)
 
 
-(set-face-foreground 'font-lock-string-face "green")
+(set-face-foreground 'font-lock-string-face "#01ea0d")
 (set-face-foreground 'font-lock-comment-face "green")
 
 (use-package doom-themes
