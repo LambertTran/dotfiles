@@ -63,10 +63,10 @@
     (show-paren-mode t)))
 
 (setq ring-bell-function 'ignore)
-(setq-default tab-width 2)
+(setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-stop-list ())
-(setq-default evil-shift-width 2)
+(setq-default evil-shift-width 4)
 
 
 (set-face-foreground 'font-lock-string-face "#01ea0d")
