@@ -1,12 +1,20 @@
+;;
+;; Ensure utf-8
+;;
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+
+;;
+;; Package managers
+;;
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -14,12 +22,70 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package which-key
-  :ensure t
-  :diminish which-key-mode
-  :config
-  (which-key-mode +1))
+;;
+;; Visual
+;;
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(blink-cursor-mode -1)
+(global-hl-line-mode +1)
+(line-number-mode +1)
+(global-display-line-numbers-mode 1)
+(column-number-mode t)
+(size-indication-mode t)
 
+;; disable startup screen
+(setq inhibit-startup-screen t)
+
+;; title bar shows full path of current file
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+       (abbreviate-file-name (buffer-file-name))
+       "%b"))))
+
+;; VSCode theme
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-one t)
+  (doom-themes-visual-bell-config))
+(setq ring-bell-function 'ignore)
+
+;; smart mode line
+(use-package smart-mode-line-powerline-theme
+  :ensure t)
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (setq sml/theme 'powerline)
+  (add-hook 'after-init-hook 'sml/setup))
+
+
+;;
+;; Backup
+;;
+(setq backup-directory-alist `(("." . "~/.saves")))
+(setq auto-save-file-name-transforms `((".*" ,"~/.saves" t)))
+
+
+;;
+;; File settings
+;;
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; reload files when changes on disk
+(global-auto-revert-mode t)
+
+;; Tabs -> space
+(setq-default tab-width 4
+              indent-tabs-mode nil
+              evil-shift-width 4)
+(setq ruby-indent-level 4)
+
+
+;;
+;; Autocomplete
+;;
 (use-package company
   :ensure t
   :diminish company-mode
@@ -32,6 +98,13 @@
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
+
+(use-package which-key
+  :ensure t
+  :diminish which-key-mode
+  :config
+  (which-key-mode +1))
+
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
@@ -43,13 +116,6 @@
 ;;(set-face-background 'hl-line "dark blue")
 
 (set-face-attribute 'region nil :background "#666")
-(setq backup-directory-alist `(("." . "~/.saves")))
-(global-hl-line-mode +1)
-(line-number-mode +1)
-(global-display-line-numbers-mode 1)
-(column-number-mode t)
-(size-indication-mode t)
-(setq inhibit-startup-screen t)
 (add-hook 'before-save-hook 'whitespace-cleanup)
 (use-package diminish
   :ensure t)
@@ -62,29 +128,14 @@
     (smartparens-global-mode 1)
     (show-paren-mode t)))
 
-(setq ring-bell-function 'ignore)
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-stop-list ())
-(setq-default evil-shift-width 4)
+(use-package smart-tabs-mode
+  :ensure t)
+(smart-tabs-insinuate 'python 'javascript 'ruby)
+
 
 
 (set-face-foreground 'font-lock-string-face "#01ea0d")
 (set-face-foreground 'font-lock-comment-face "green")
-
-(use-package doom-themes
-  :ensure t
-  :config
-  (load-theme 'doom-one t)
-  (doom-themes-visual-bell-config))
-(use-package smart-mode-line-powerline-theme
-  :ensure t)
-
-(use-package smart-mode-line
-  :ensure t
-  :config
-  (setq sml/theme 'powerline)
-  (add-hook 'after-init-hook 'sml/setup))
 
 
 (defun reload-emacs()
@@ -115,7 +166,7 @@
   (require 'helm-config)
   (helm-mode 1)
   (setq helm-split-window-inside-p t
-    helm-move-to-line-cycle-in-source t)
+        helm-move-to-line-cycle-in-source t)
   (setq helm-autoresize-max-height 0)
   (setq helm-autoresize-min-height 20)
   (helm-autoresize-mode 1)
@@ -133,7 +184,6 @@
   (helm-projectile-on))
 
 (global-set-key (kbd "C-x g") 'magit-status)
-(global-auto-revert-mode t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -160,4 +210,4 @@
     ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
  '(package-selected-packages
    (quote
-    (helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme))))
+    (swift-mode helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme))))
