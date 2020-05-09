@@ -81,6 +81,17 @@
               indent-tabs-mode nil
               evil-shift-width 4)
 (setq ruby-indent-level 4)
+(add-hook 'python-mode-hook
+          (lambda () 
+	  	(setq tab-width 4)
+		(setq indent-tabs-mode nil)))
+;;   (add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
+;;   (add-hook 'python-mode-hook (lambda ()
+;;                                    (guess-style-guess-tab-width)))
+;; (use-package smart-tabs-mode
+;;   :ensure t)
+;; (smart-tabs-insinuate 'python 'javascript 'ruby)
+;; 
 
 
 ;;
@@ -127,10 +138,6 @@
     (require 'smartparens-config)
     (smartparens-global-mode 1)
     (show-paren-mode t)))
-
-(use-package smart-tabs-mode
-  :ensure t)
-(smart-tabs-insinuate 'python 'javascript 'ruby)
 
 
 
