@@ -1,7 +1,8 @@
 alias pm=". ~/.my_bash_aliases"
+alias e="emacs"
 alias kb="kubectl"
 alias dexec="docker exec -it"
-alias kexec="kubectl_ssh_docker" 
+alias kexec="kubectl_ssh_docker"
 alias getkb="get_kb_container"
 
 
