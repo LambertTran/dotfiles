@@ -1,3 +1,4 @@
+alias tf="terraform"
 alias pm=". ~/.my_bash_aliases"
 alias e="emacs"
 alias kb="kubectl"
