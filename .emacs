@@ -22,6 +22,11 @@
 (eval-when-compile
   (require 'use-package))
 
+;; Refesh package list
+(unless package-archive-contents
+  (package-refresh-contents))
+
+
 ;;
 ;; Visual
 ;;
@@ -82,17 +87,29 @@
               evil-shift-width 4)
 (setq ruby-indent-level 4)
 (add-hook 'python-mode-hook
-          (lambda () 
-	  	(setq tab-width 4)
-		(setq indent-tabs-mode nil)))
+          (lambda ()
+        (setq tab-width 4)
+        (setq indent-tabs-mode nil)))
 ;;   (add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
 ;;   (add-hook 'python-mode-hook (lambda ()
 ;;                                    (guess-style-guess-tab-width)))
 ;; (use-package smart-tabs-mode
 ;;   :ensure t)
 ;; (smart-tabs-insinuate 'python 'javascript 'ruby)
-;; 
+;;
 
+;;
+;; Utilities
+;;
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g b" . dumb-jump-back)
+         ("M-g i" . dumb-jump-go-prompt)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+  :ensure)
 
 ;;
 ;; Autocomplete
