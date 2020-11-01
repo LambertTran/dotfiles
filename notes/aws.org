@@ -1,0 +1,21 @@
+* AWS extend file
+
+** https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html
+
+** Steps:
+   #+BEGIN_SRC bash
+   # Get type
+   df -hT
+
+   # List Volume
+   lsblk
+
+   # Extend partion
+   sudo growpart [disk]
+
+   # Extend volume
+   sudo resize2fs [volume]
+   #+END_SRC
+
+
+* Query Dynamodb

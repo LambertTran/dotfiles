@@ -39,6 +39,45 @@
 (column-number-mode t)
 (size-indication-mode t)
 
+;; disable line number in shell mode
+;(dolist (mode '(org-mode-hook
+;                term-mode-hook
+;                shell-mode-hook
+;                esehll-mode-hook))
+;  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;; Org Mode
+(defun org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (visual-line-mode 1))
+
+
+(use-package org
+  :hook (org-mode . org-mode-setup)
+  :ensure t
+  :defer t
+  :config
+  (setq org-ellipsis " ▾")
+  (setq org-hide-emphasis-markers t)
+  )
+
+(use-package org-bullets
+  :ensure t
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+(defun org-mode-visual-fill ()
+  (setq visual-fill-column-width 100
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :ensure t
+  :hook (org-mode . org-mode-visual-fill))
+
 ;; disable startup screen
 (setq inhibit-startup-screen t)
 
@@ -69,6 +108,7 @@
 ;;
 ;; Backup
 ;;
+(setq create-lockfiles nil)
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq auto-save-file-name-transforms `((".*" ,"~/.saves" t)))
 
@@ -210,7 +250,8 @@
   (setq helm-split-window-inside-p t
         helm-move-to-line-cycle-in-source t)
   (setq helm-autoresize-max-height 0)
-  (setq helm-autoresize-min-height 20)
+  (setq helm-autoresize-min-height 50)
+  ;(setq helm-split-window-default-side 'above)
   (helm-autoresize-mode 1)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
   (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
@@ -224,6 +265,12 @@
   :ensure t
   :config
   (helm-projectile-on))
+
+;(setq helm-posframe-parameters
+;      '((left-fringe . 100)
+;        (right-fringe . 100)
+;        (helm-posframe-width 100)))
+
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -248,8 +295,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
+   '("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default))
  '(package-selected-packages
-   (quote
-    (swift-mode helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme))))
+   '(exwm helm-posframe ivy-posframe neotree skewer-mode swift-mode helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme)))
