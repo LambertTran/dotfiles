@@ -19,3 +19,21 @@
 
 
 * Query Dynamodb
+
+
+* Query EC2
+** AWS CLI
+#+BEGIN_SRC bash
+aws ec2 describe-instances --filter Name=instance-id,Values=* --query "Reservations[*].Instances[*].{[Display1]:InstanceId,[Display2]:State}"
+#+END_SRC
+
+
+* Mount New Volume
+** https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
+
+** Steps:
+#+BEGIN_SRC bash
+1. Create Volume and Attach via AWS console
+2. Create mount point directory: mkdir [dir]
+3. Mount Volume: sudo mount /dev/xfvc [dir]
+#+END_SRC

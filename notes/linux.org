@@ -1,4 +1,9 @@
 * Networking
+Troubleshoot:
+- Layer 3: ping, traceroute, tracepath
+- Layer 4: ss, telnet, tpcdump, nc
+- Layer 5: dig
+
 ** Dig
 #+BEGIN_SRC  bash
 dog -4 www.google.com +trace
@@ -15,4 +20,9 @@ firewall-cmd --add-port=80/tcp
 firewall-cmd --list-all
 firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=10.0.0.10
 firewall-cmd --add-masquerade
-#+END_SRc
+#+END_SRC
+
+** iptables
+#+BEGIN_SRC bash
+iptables -t [nat filter mangle] -L [INPUT PREROUTING]
+#+END_SRC
