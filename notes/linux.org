@@ -1,0 +1,12 @@
+* Networking
+** Dig
+dog -4 www.google.com +trace
+
+** Listening port
+ss -lntp
+
+** firewall
+firewall-cmd --add-port=80/tcp
+firewall-cmd --list-all
+firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=10.0.0.10
+firewall-cmd --add-masquerade
