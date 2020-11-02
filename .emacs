@@ -191,6 +191,8 @@
   :config
   (which-key-mode +1))
 
+; Make tab work with org-mode
+(setq evil-want-C-i-jump nil)
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)

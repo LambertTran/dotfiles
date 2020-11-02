@@ -1,12 +1,18 @@
 * Networking
 ** Dig
+#+BEGIN_SRC  bash
 dog -4 www.google.com +trace
+#+END_SRC
 
 ** Listening port
+#+BEGIN_SRC bash
 ss -lntp
+#+END_SRC
 
 ** firewall
+#+BEGIN_SRC bash
 firewall-cmd --add-port=80/tcp
 firewall-cmd --list-all
 firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=10.0.0.10
 firewall-cmd --add-masquerade
+#+END_SRc
