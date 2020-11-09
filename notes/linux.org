@@ -9,10 +9,12 @@ Troubleshoot:
 dog -4 www.google.com +trace
 #+END_SRC
 
+
 ** Listening port
 #+BEGIN_SRC bash
 ss -lntp
 #+END_SRC
+
 
 ** firewall
 #+BEGIN_SRC bash
@@ -22,7 +24,27 @@ firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=10.0.0.10
 firewall-cmd --add-masquerade
 #+END_SRC
 
+
 ** iptables
 #+BEGIN_SRC bash
 iptables -t [nat filter mangle] -L [INPUT PREROUTING]
+#+END_SRC
+
+** SSH tunnel
+#+BEGIN_SRC bash
+ssh -L [local port]:[remote IP]:[remote port]
+#+END_SRC
+
+* Patch
+#+BEGIN_SRC bash
+# Patch
+patch -b -p1 < [diff.file]
+
+# Reverse
+patch -R -p1 < [diff.file]
+#+END_SRC
+
+* Service
+#+BEGIN_SRC bash
+ps -eo pid,lstart,cmd
 #+END_SRC

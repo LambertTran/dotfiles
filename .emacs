@@ -203,7 +203,9 @@
 ;;(require 'hl-line)
 ;;(set-face-background 'hl-line "dark blue")
 
-(set-face-attribute 'region nil :background "#666")
+(set-face-attribute 'region nil :background "#FF0000")
+(set-face-attribute 'hl-line nil :background "#666")
+
 (add-hook 'before-save-hook 'whitespace-cleanup)
 (use-package diminish
   :ensure t)
@@ -237,6 +239,8 @@
 (require 'projectile)
 (define-key projectile-mode-map (kbd "C-q p") 'projectile-command-map)
 (projectile-mode +1)
+(setq projectile-globally-ignored-files '( "TAGS" "*/*node_modules"))
+
 
 (use-package helm
   :ensure t
@@ -299,4 +303,4 @@
  '(custom-safe-themes
    '("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default))
  '(package-selected-packages
-   '(exwm helm-posframe ivy-posframe neotree skewer-mode swift-mode helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme)))
+   '(web-mode emmet-mode exwm helm-posframe ivy-posframe neotree skewer-mode swift-mode helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme)))
