@@ -30,9 +30,27 @@ firewall-cmd --add-masquerade
 iptables -t [nat filter mangle] -L [INPUT PREROUTING]
 #+END_SRC
 
+
 ** SSH tunnel
 #+BEGIN_SRC bash
 ssh -L [local port]:[remote IP]:[remote port]
+#+END_SRC
+
+
+** Delete unused bridge interface
+#+BEGIN_SRC
+sudo ip link delete [interface] type [type: bridge]
+#+END_SRC
+
+** Delete unused bridge interface
+#+BEGIN_SRC
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -t nat -F
+iptables -t mangle -F
+iptables -F
+iptables -X
 #+END_SRC
 
 * Patch

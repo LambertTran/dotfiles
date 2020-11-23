@@ -1,0 +1,107 @@
+* Networking
+** Pods and services need to be on 2 separates CIDRs
+
+
+* Query
+** Get pods in node
+#+BEGIN_SRC
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
+#+END_SRC
+
+** Get service
+#+BEGIN_SRC
+curl [servicename].[namespace].svc.cluster.local
+#+END_SRC
+
+* Taint - Tolerant
+** Taint node: stop pods from scheduled to node
+#+BEGIN_SRC
+kubectl taint node [node] node-type=monitor-cluster:NoSchedule
+#+END_SRC
+
+** Untant master node
+#+BEGIN_SRC
+kubectl taint node [master node] node-role.kubernetes.io/master:NoSchedule-
+#+END_SRC
+
+
+** Toleration: allow pods to be deployed to taint nodes
+#+BEGIN_SRC yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prod
+  template:
+    metadata:
+      labels:
+        app: prod
+    spec:
+      containers:
+      - args:
+        - sleep
+        - "3600"
+        image: busybox
+        name: main
+      tolerations: <<<<<<< Here
+      - key: node-type
+        operator: Equal
+        value: monitor-cluster
+        effect: NoSchedule
+#+END_SRC
+
+* Port forwarding/exposing
+** service
+#+BEGIN_SRC
+kubectl port-forward service/elasticsearch-master 9200:9200
+#+END_SRC
+
+
+* LB-cluster
+** install metallb
+#+BEGIN_SRC
+cd /opt/lb/release-workspace/external-charts
+helm install metallb metallb
+#+END_SRC
+
+** install nfs provider client
++ Need to DNS
+
+#+BEGIN_SRC
+cd /opt/lb/release-workspace/external-charts
+helm install nfs-provisioner nfs-client-provisioner --set nfs.server=dev-database.lbtran.com --set nfs.path=/opt/lb/nas
+#+END_SRC
+
+** install elasticsearch
+https://github.com/elastic/helm-charts/tree/master/elasticsearch
+
+#+BEGIN_SRC
+helm repo add elastic https://helm.elastic.co
+helm repo update
+cd /opt/lb/tools/helm/elasticsearch
+helm upgrade -i elasticsearch elastic/elasticsearch -f values.yaml
+#+END_SRC
+
+
+* FluentD
+** mount points
++ FluentD look for files in /var/log/containers
+  ==> We need the whole symlink path
+#+BEGIN_SRC yaml
+     # actual file
+     - name: opt
+       hostPath:
+         path: /opt/docker/containers
+     # symlink
+     - name: varlogpod
+       hostPath:
+         path: /var/log/pods
+     # symlink
+     - name: varlogcontainer
+       hostPath:
+         path: /var/log/containers
+#+END_SRC

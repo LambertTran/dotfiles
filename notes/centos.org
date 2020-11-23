@@ -1,0 +1,10 @@
+* SSH log
+** sshd_config
+#+BEGIN_SRC
+SyslogFacility AUTHPRIV
+#+END_SRC
+
+** syslog config
+#+BEGIN_SRC
+authpriv.* /var/log/secure
+#+END_SRC
