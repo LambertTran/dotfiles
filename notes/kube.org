@@ -13,6 +13,7 @@ kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
 curl [servicename].[namespace].svc.cluster.local
 #+END_SRC
 
+
 * Taint - Tolerant
 ** Taint node: stop pods from scheduled to node
 #+BEGIN_SRC
@@ -54,6 +55,7 @@ spec:
         effect: NoSchedule
 #+END_SRC
 
+
 * Port forwarding/exposing
 ** service
 #+BEGIN_SRC
@@ -86,6 +88,15 @@ cd /opt/lb/tools/helm/elasticsearch
 helm upgrade -i elasticsearch elastic/elasticsearch -f values.yaml
 #+END_SRC
 
+** install elasticsearch
+https://github.com/elastic/helm-charts/tree/master/elasticsearch
+
+#+BEGIN_SRC
+helm repo add elastic https://helm.elastic.co
+helm repo update
+cd /opt/lb/tools/helm/efk
+helm install kibana elastic/kibana -f kibana-values.yaml
+#+END_SRC
 
 * FluentD
 ** mount points

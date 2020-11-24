@@ -1,0 +1,26 @@
+* Stages
+- all repos are pulled to //builds/
+#+BEGIN_SRC yaml
+# default image
+image: []
+
+stages:
+  - stage1
+  - stage2
+  - stage3
+
+# some block
+block1:
+  # reference to stage above
+  stage: stage1
+  # specific img for this stage
+  image: []
+  # prepare env
+  before_script:
+    - ln -s /builds/[repo name] [some dir]
+  # actual job
+  script:
+    - script1
+    - script2
+
+#+END_SRC
