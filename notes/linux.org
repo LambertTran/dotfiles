@@ -53,6 +53,7 @@ iptables -F
 iptables -X
 #+END_SRC
 
+
 * Patch
 #+BEGIN_SRC bash
 # Patch
@@ -62,7 +63,18 @@ patch -b -p1 < [diff.file]
 patch -R -p1 < [diff.file]
 #+END_SRC
 
+
 * Service
 #+BEGIN_SRC bash
 ps -eo pid,lstart,cmd
+#+END_SRC
+
+* GNU key
+** Generate key
+#+BEGIN_SRC bash
+gpg --full-generate-key
+gpg --armor --output pubkey.text --export <username>
+gpg --armor --output privkey.asc --export-secret-keys <username>
+gpg --encrypt --recipient <username> <filename>
+gpg --decrypt <encrypted file>
 #+END_SRC

@@ -13,14 +13,19 @@ stages:
 block1:
   # reference to stage above
   stage: stage1
+
   # specific img for this stage
   image: []
+
+  # when to run
+  when: always
+
   # prepare env
   before_script:
     - ln -s /builds/[repo name] [some dir]
+
   # actual job
   script:
     - script1
     - script2
-
 #+END_SRC

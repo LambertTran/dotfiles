@@ -1,6 +1,8 @@
-;;
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
 ;; Ensure utf-8
-;;
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -45,6 +47,19 @@
 ;                shell-mode-hook
 ;                esehll-mode-hook))
 ;  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;; Go Mode
+(use-package go-mode
+  :ensure t
+  :defer t
+  )
+
+;; enable flycheck
+(add-hook 'go-mode-hook 'flycheck-mode)
+  ;; enable company mode for autocompletion
+  (add-hook 'go-mode-hook (lambda ()
+                            (set (make-local-variable 'company-backends) '(company-go))
+                            (company-mode)))
 
 ;; Org Mode
 (defun org-mode-setup ()
@@ -165,9 +180,13 @@
   (pbcopy)
   (delete-region (region-beginning) (region-end)))
 
+;; copy and paste
 (global-set-key (kbd "C-c c") 'pbcopy)
 (global-set-key (kbd "C-c v") 'pbpaste)
 (global-set-key (kbd "C-c x") 'pbcut)
+
+;; insert src org
+(global-set-key (kbd "C-c s") 'org-insert-structure-template)
 
 ;;
 ;; Autocomplete
@@ -303,4 +322,4 @@
  '(custom-safe-themes
    '("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default))
  '(package-selected-packages
-   '(web-mode emmet-mode exwm helm-posframe ivy-posframe neotree skewer-mode swift-mode helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme)))
+   '(company-go go-autocomplete go-mode web-mode emmet-mode exwm helm-posframe ivy-posframe neotree skewer-mode swift-mode helm-projectile flycheck company which-key diminish smart-mode-line-powerline-theme doom-themes use-package zerodark-theme yaml-mode vs-dark-theme terraform-mode spacemacs-theme smart-mode-line projectile multi-term markdown-mode magit json-mode helm groovy-mode flymd evil dracula-theme dockerfile-mode color-theme-sanityinc-tomorrow atom-one-dark-theme)))

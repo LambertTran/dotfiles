@@ -18,3 +18,15 @@ dockerfile: folderA/dockerfiles/serviceA/Dockerfile
 # scan image currently on host
 $ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock goodwithtech/dockle:v${DOCKLE_LATEST} [img name]
 #+END_SRC
+
+* Tags
+https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
+** Base image
+- use stable tag
+
+** Deployment image
+- use unique tag
+- date-time-stamp
+- digest
+- build id
+- build-system + build id

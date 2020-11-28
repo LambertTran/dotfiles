@@ -98,6 +98,7 @@ cd /opt/lb/tools/helm/efk
 helm install kibana elastic/kibana -f kibana-values.yaml
 #+END_SRC
 
+
 * FluentD
 ** mount points
 + FluentD look for files in /var/log/containers
