@@ -5,14 +5,16 @@ on: [push]
 jobs:
   build:
     # Stage name
-    name: build-img
+    name: build binary
     # This job runs on Linux
     runs-on: ubuntu-latest
     # Step build
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-go@v1
-    - run: make test
+    - run: |
+        cd src
+        make test
     - name: Notify slack fail
       if: failure()
       uses: rtCamp/action-slack-notify@master
