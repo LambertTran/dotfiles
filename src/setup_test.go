@@ -22,11 +22,11 @@ func TestSetup(t *testing.T) {
 	}
 
 
-	t.Run("rootDir should be root of dotfiles repo", func(t *testing.T) {
-		got := getRootDir()
-		want := "/opt/lb/dotfiles"
-		assertCorrectMessage(t, got, want)
-	})
+	//t.Run("rootDir should be root of dotfiles repo", func(t *testing.T) {
+	//	got := getRootDir()
+	//	want := "/opt/lb/dotfiles"
+	//	assertCorrectMessage(t, got, want)
+	//})
 
 
 	t.Run("create correct fullpath list", func(t *testing.T) {
