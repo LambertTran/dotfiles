@@ -1,0 +1,21 @@
+name: Build new image
+# This workflow is triggered on pushes to the repository.
+on: [push]
+
+jobs:
+  build:
+    # Stage name
+    name: build-img
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    # Step build
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-go@v1
+    - run: make test
+    - name: Notify slack fail
+      if: failure()
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_MESSAGE: "Unit test failed"

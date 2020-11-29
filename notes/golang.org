@@ -1,0 +1,91 @@
+* Docs
+- https://godoc.org/
+- https://gobyexample.com/
+
+* Environment vars
+- GOPATH
+- GOROOT
+- GOBIN: install location for "go build"
+
+* Vars
+#+BEGIN_SRC yaml
+"_" : unused variable
+
+"...[var]" : variadic parameter
+
+"x := 42" :  short decoration parameter - can only be inside a function - limited scope
+
+"var x = 42" : long decoration parameter - can be outside of a function - unlimited scope
+
+"var x init": default value is 0, false or ""
+#+END_SRC
+
+* Types
+#+BEGIN_SRC bash
+`Some string "value"`: string literal
+
+"Primative data type": string, array, struct, pointer
+
+"composite data type": combination of multiple primative data type
+
+# create type 'hotdog' with underlining type is 'int'
+type hotdog int
+
+"const a = 42": constant a
+
+"const a = iota": auto increment
+
+#+END_SRC
+
+* Function
+** Synctax
+#+BEGIN_SRC go
+func (r receiver) identifier(parameters) (return(s)) {
+//    ^ attaches to type
+// func (c Car) makeNoise() {
+...
+}
+#+END_SRC
+
+** Variadic Params
+#+BEGIN_SRC go
+// Pass in 0 or more value of int
+// variadic param needs to be at the end
+func foo(s string, x ...int) {
+    x == array
+}
+#+END_SRC
+
+** Defer
+#+BEGIN_SRC go
+func main {
+    // run this function right before main() is done
+    defer foo()
+}
+func foo(){
+...
+}
+#+END_SRC
+
+** Interfaces
+#+BEGIN_SRC bash
+
+#+END_SRC
+
+** Return a function
+#+BEGIN_SRC bash
+func bar() func() int {
+    return func() int {
+        return 123
+    }
+}
+#+END_SRC
+
+* Pointer
+#+BEGIN_SRC bash
+"&a": give address stores value of 'a', while '&a' has a type of '*[type]'
+"*a": dereference address -> give value stored in that address
+#+END_SRC
+
+#+begin_src
+#+end_src
