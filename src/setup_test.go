@@ -6,12 +6,12 @@ import (
 )
 
 func TestSetup(t *testing.T) {
-	assertCorrectMessage := func(t testing.TB, got, want string) {
-		t.Helper()
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
-	}
+	//assertCorrectMessage := func(t testing.TB, got, want string) {
+	//	t.Helper()
+	//	if got != want {
+	//		t.Errorf("got %q want %q", got, want)
+	//	}
+	//}
 
 
 	assertStringArray := func(t testing.TB, got, want []string) {
