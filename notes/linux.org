@@ -42,7 +42,8 @@ ssh -L [local port]:[remote IP]:[remote port]
 sudo ip link delete [interface] type [type: bridge]
 #+END_SRC
 
-** Delete unused bridge interface
+
+** Delete all tables
 #+BEGIN_SRC
 iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
@@ -69,6 +70,7 @@ patch -R -p1 < [diff.file]
 ps -eo pid,lstart,cmd
 #+END_SRC
 
+
 * GNU key
 ** Generate key
 #+BEGIN_SRC bash
@@ -78,3 +80,9 @@ gpg --armor --output privkey.asc --export-secret-keys <username>
 gpg --encrypt --recipient <username> <filename>
 gpg --decrypt <encrypted file>
 #+END_SRC
+
+* Pipe log
+#+begin_src bash
+[comand] | tee -a $(data +%F).log
+EXIT_CODE=${PIPESTATUS[0]}
+#+end_src

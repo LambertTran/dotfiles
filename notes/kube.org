@@ -117,3 +117,23 @@ helm install kibana elastic/kibana -f kibana-values.yaml
        hostPath:
          path: /var/log/containers
 #+END_SRC
+
+* Volume
+** PVC
+- Available storage option that pod can request/claim
+#+begin_src yaml
+ReadWriteOnce: can be used by a single node
+
+ReadOnlyMany: multiple nodes can read from this
+
+ReadWriteMany: can be read and written to by many nodes
+#+end_src
+
+** PV
+- Actual persistent volume that storage provisioner can provide base on PVC
+
+* Secrets
+- A secret can store many key/value pair
+#+begin_src bash
+kubectl create secret generic [secretname] --from-literal [key]=[value] [key]=[value]
+#+end_src
