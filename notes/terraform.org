@@ -1,0 +1,26 @@
+* State
+** Access remote state
+- https://www.terraform.io/docs/providers/terraform/d/remote_state.html
+- remote state needs to have outputs
+
+#+begin_src terraform
+# call
+data "terraform_remote_state" "this" {
+    backend = "s3"
+    config = {
+        bucket = "s3_bucket"
+        key = "path to backend statefile"
+        region = "region"
+    }
+}
+
+# use
+data.terraform_remote_state.this.outputs.[some attribute]
+#+end_src
+
+
+* Name
+** Get current folder name
+#+begin_src terraform
+current_dir = basename(dirname(path.cwd))
+#+end_src

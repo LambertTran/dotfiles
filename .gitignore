@@ -2,4 +2,7 @@
 *.DS_STORE
 **auto-save-list
 **elpa
-**projectile-bookmarks.eld
+**projectile**
+**recentf**
+**transient**
+
