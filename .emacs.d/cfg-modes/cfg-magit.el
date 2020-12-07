@@ -11,10 +11,6 @@
 	 (global-set-key (kbd "C-x g") 'magit-status)
   )
 
-;; vim mode when using magit
-(use-package evil-magit
-  :ensure t
-  :after magit)
 
 ;; open file in git
 (use-package git-link

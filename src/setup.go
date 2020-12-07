@@ -8,7 +8,7 @@ import (
 	"regexp"
 )
 
-var DotFiles = []string{".bashrc", ".bash_aliases", ".emacs"}
+var DotFiles = []string{".bashrc", ".bash_aliases", ".emacs.d"}
 
 var VERSION string
 
