@@ -37,3 +37,4 @@ aws ec2 describe-instances --filter Name=instance-id,Values=* --query "Reservati
 2. Create mount point directory: mkdir [dir]
 3. Mount Volume: sudo mount /dev/xfvc [dir]
 #+END_SRC
+

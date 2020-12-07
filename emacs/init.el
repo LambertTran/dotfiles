@@ -47,8 +47,20 @@
 (require 'cfg-projectile)
 (require 'cfg-helm)
 (require 'cfg-magit)
+(require 'cfg-org)
 (require 'cfg-theme)
 (require 'cfg-rainbow-delimiters)
+(require 'cfg-dumb-jump)
+(require 'cfg-modeline)
+(require 'cfg-tab)
+(require 'cfg-syntax-check)
+(require 'cfg-snippets)
+;;(require 'cfg-company)
+(require 'cfg-js)
+(require 'cfg-html)
+(require 'cfg-yaml)
+(require 'cfg-go)
+(require 'cfg-python)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -56,7 +68,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit minions doom-modeline rainbow-delimiters moe-theme powerline helm-projectile helm projectile use-package telephone-line evil)))
+   '(visual-fill-column org-bullets magit minions doom-modeline rainbow-delimiters moe-theme powerline helm-projectile helm projectile use-package telephone-line evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
