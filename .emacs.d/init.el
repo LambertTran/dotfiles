@@ -61,6 +61,7 @@
 (require 'cfg-yaml)
 (require 'cfg-go)
 (require 'cfg-python)
+(require 'cfg-dockerfile)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -75,4 +76,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-

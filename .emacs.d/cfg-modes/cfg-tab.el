@@ -17,5 +17,8 @@
   :hook ((text-mode . ws-butler-mode)
          (prog-mode . ws-butler-mode)))
 
+
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
 ;; export package
 (provide 'cfg-tab)
