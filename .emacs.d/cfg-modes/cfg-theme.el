@@ -13,6 +13,8 @@
 
 (setq moe-theme-highlight-buffer-id t)
 
+(show-paren-mode t)
+(setq show-paren-style 'expression)
 
 (load-theme 'moe-dark t)
 

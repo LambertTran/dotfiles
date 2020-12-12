@@ -8,6 +8,7 @@
   (variable-pitch-mode 1)
   )
 
+
 ;; disable line number in shell mode
 (dolist (mode '(org-mode-hook
                 term-mode-hook
@@ -44,5 +45,8 @@
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
 (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
 
+;; extend block code
+(custom-set-faces
+ '(org-block ((t (:extend t)))))
 
 (provide 'cfg-org)
