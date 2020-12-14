@@ -3,13 +3,13 @@
 ;; =======================================
 
 ; Disable the toolbar
-(tool-bar-mode -1)          
+(tool-bar-mode -1)
 
 ; Disable tooltips
-(tooltip-mode -1)           
+(tooltip-mode -1)
 
 ; Disable the menu bar
-(menu-bar-mode -1)            
+(menu-bar-mode -1)
 
 ; Enable line number
 (global-display-line-numbers-mode 1)
@@ -19,6 +19,13 @@
 
 ; Reload files when changes on disk
 (global-auto-revert-mode t)
+
+; Initial frame size
+(add-to-list 'default-frame-alist '(height . 40))
+(add-to-list 'default-frame-alist '(width . 120))
+
+; Disable scroll bar
+(toggle-scroll-bar -1)
 
 ; Backup
 (setq create-lockfiles nil)
@@ -56,7 +63,7 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
-;; Switch Window 
+;; Switch Window
 (global-set-key (kbd "C-x [") 'windmove-left)
 (global-set-key (kbd "C-x ]") 'windmove-right)
 
