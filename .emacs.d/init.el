@@ -66,6 +66,7 @@
 (require 'cfg-go)
 (require 'cfg-python)
 (require 'cfg-dockerfile)
+(require 'cfg-smartparens)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

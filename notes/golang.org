@@ -67,11 +67,6 @@ func foo(){
 }
 #+END_SRC
 
-** Interfaces
-#+BEGIN_SRC bash
-
-#+END_SRC
-
 ** Return a function
 #+BEGIN_SRC bash
 func bar() func() int {
@@ -87,5 +82,73 @@ func bar() func() int {
 "*a": dereference address -> give value stored in that address
 #+END_SRC
 
-#+begin_src
+* Interfaces vs Struct Method
+** Struct method
+#+BEGIN_SRC go
+type Car struct {
+    wheels int
+}
+
+func (c Car) NumOfWheels() int {
+    return c.wheels
+}
+
+type Bike struct {
+    wheels int
+}
+
+func (b Bike) NumOfWheels() int {
+    return b.wheels
+}
+#+END_SRC
+
+
+** Interface
+#+BEGIN_SRC go
+type Car struct {
+    wheels int
+}
+
+func (c Car) NumOfWheels() int {
+    return c.wheels
+}
+
+type Bike struct {
+    wheels int
+}
+
+func (b Bike) NumOfWheels() int {
+    return b.wheels
+}
+
+type VehicleWithWheels interface {
+    NumOfWheels() int
+}
+
+func Handler(v VehicleWithWheels) {
+    return something
+}
+#+END_SRC
+
+* Concurrency
+- goroutines: function/method run concurrency
+#+begin_src go
+var wg sync.WaitGroup
+wg.Add(1)
+go someFunc() // add wg.Done() inside func
+wg.Wait()
 #+end_src
+
+qweqweqwe
+
+qweqweqwe
+
+qweqweqwe
+
+
+func test {
+
+func {}
+qweqweqwe
+
+qweqweqwe

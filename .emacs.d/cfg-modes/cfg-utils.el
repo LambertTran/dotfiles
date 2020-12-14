@@ -23,7 +23,7 @@
 ; Backup
 (setq create-lockfiles nil)
 (setq backup-directory-alist `(("." . "~/.saves")))
-(setq auto-save-file-name-transforms `((".*" ,"~/.saves" t)))
+;;(setq auto-save-file-name-transforms `((".*" ,"~/.saves" t)))
 
 ; Ignore beel
 (setq ring-bell-function 'ignore)

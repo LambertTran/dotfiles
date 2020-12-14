@@ -49,4 +49,10 @@
 (custom-set-faces
  '(org-block ((t (:extend t)))))
 
+;; set block code indentation
+(setq org-src-preserve-indentation nil
+      org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-startup-indented t)
+
 (provide 'cfg-org)

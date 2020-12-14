@@ -1,6 +1,6 @@
 alias tf="terraform"
 alias pm=". ~/.my_bash_aliases"
-alias e="emacs"
+alias e="emacs -nw"
 alias kb="kubectl"
 alias dexec="docker exec -it"
 alias kexec="kubectl_ssh_docker"

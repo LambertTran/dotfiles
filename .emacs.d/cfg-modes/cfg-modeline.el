@@ -1,51 +1,7 @@
-;; =======================================
-;; Directory management
-;; =======================================
-
-(use-package diminish
-  :ensure t
-  )
-
-(use-package smart-mode-line
-  :disabled
-  :if dw/is-termux
-  :config
-  (setq sml/no-confirm-load-theme t)
-  (sml/setup)
-  (sml/apply-theme 'respectful)  ; Respect the theme colors
-  (setq sml/mode-width 'right
-      sml/name-width 60)
-
-  (setq-default mode-line-format
-  `("%e"
-      ,(when dw/exwm-enabled
-          '(:eval (format "[%d] " exwm-workspace-current-index)))
-      mode-line-front-space
-      evil-mode-line-tag
-      mode-line-mule-info
-      mode-line-client
-      mode-line-modified
-      mode-line-remote
-      mode-line-frame-identification
-      mode-line-buffer-identification
-      sml/pos-id-separator
-      (vc-mode vc-mode)
-      " "
-      ;mode-line-position
-      sml/pre-modes-separator
-      mode-line-modes
-      " "
-      mode-line-misc-info))
-
-  (setq rm-excluded-modes
-    (mapconcat
-      'identity
-      ; These names must start with a space!
-      '(" GitGutter" " MRev" " company"
-      " Helm" " Undo-Tree" " Projectile.*" " Z" " Ind"
-      " Org-Agenda.*" " ElDoc" " SP/s" " cider.*")
-      "\\|")))
-
+;;; package --- Modeline
+;;; Commentary:
+;;; - make thing look nice
+;;; Code:
 (use-package minions
   :ensure t
   :hook (doom-modeline-mode . minions-mode)
@@ -71,5 +27,17 @@
   (doom-modeline-buffer-file-name-style 'truncate-except-project)
   (doom-modeline-major-mode-icon nil))
 
-;; export package
+
+(require 'minions)
+(require 'doom-modeline)
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+(setq doom-modeline-modal-icon nil)
+(setq evil-normal-state-tag   (propertize "[Normal]" 'face '(:background "red" :foreground "red"))
+      evil-emacs-state-tag    (propertize "[Emacs]" 'face '((:background "orange" :foreground "red")))
+      evil-insert-state-tag   (propertize "[Insert]" 'face '((:background "red") :foreground "white"))
+      evil-motion-state-tag   (propertize "[Motion]" 'face '((:background "blue") :foreground "white"))
+      evil-visual-state-tag   (propertize "[Visual]" 'face '((:background "grey80" :foreground "red")))
+      evil-operator-state-tag (propertize "[Operator]" 'face '((:background "purple"))))
 (provide 'cfg-modeline)
+;;; cfg-modeline.el ends here
