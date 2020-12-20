@@ -50,7 +50,8 @@
 (require 'cfg-utils)
 (require 'cfg-evil)
 (require 'cfg-projectile)
-(require 'cfg-helm)
+;(require 'cfg-helm)
+(require 'cfg-ivy)
 (require 'cfg-magit)
 (require 'cfg-org)
 (require 'cfg-rainbow-delimiters)
@@ -76,6 +77,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("27a1dd6378f3782a593cc83e108a35c2b93e5ecc3bd9057313e1d88462701fcd" default))
+ '(helm-candidate-number-limit 10)
  '(package-selected-packages
    '(hcl-mode dockerfile-mode python-mode go-mode yaml-mode web-mode prettier-js js2-mode company yasnippet flycheck doom-modeline minions diminish dumb-jump rainbow-delimiters git-gutter git-link magit visual-fill-column use-package org-bullets moe-theme helm-projectile evil doom-themes)))
 (custom-set-faces
