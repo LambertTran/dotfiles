@@ -7,7 +7,7 @@
   :diminish
   :bind (("C-s" . swiper)
          :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)	
+         ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
          ("C-j" . ivy-next-line)
          ("C-k" . ivy-previous-line)
@@ -20,6 +20,7 @@
          ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1))
+
 
 (use-package counsel
   :ensure t
@@ -35,5 +36,25 @@
   (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
 
 
+;; Adds M-x recent command sorting for counsel-M-x
+(use-package smex
+  :ensure t
+  :defer 1
+  :after counsel)
+
+;; search-box
+(use-package ivy-posframe
+  :ensure t
+  :custom
+  (ivy-posframe-width      115)
+  (ivy-posframe-min-width  115)
+  (ivy-posframe-height     10)
+  (ivy-posframe-min-height 10)
+  :config
+  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  (setq ivy-posframe-parameters '((parent-frame . nil)
+                                  (left-fringe . 10)
+                                  (right-fringe . 10)))
+  (ivy-posframe-mode 1))
 ;; export package
 (provide 'cfg-ivy)
