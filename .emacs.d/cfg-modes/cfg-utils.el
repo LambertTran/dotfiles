@@ -30,10 +30,16 @@
 ; Backup
 (setq create-lockfiles nil)
 (setq backup-directory-alist `(("." . "~/.saves")))
-;;(setq auto-save-file-name-transforms `((".*" ,"~/.saves" t)))
+(setq auto-save-file-name-transforms `((".*" ,"~/.saves" t)))
 
 ; Ignore beel
 (setq ring-bell-function 'ignore)
+                                        ;
+;; Transparent windows
+(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+(set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;
 ;; Copy and Paste
@@ -66,6 +72,15 @@
 ;; Switch Window
 (global-set-key (kbd "C-x [") 'windmove-left)
 (global-set-key (kbd "C-x ]") 'windmove-right)
+
+
+(use-package super-save
+  :ensure t
+  :defer 1
+  :diminish super-save-mode
+  :config
+  (super-save-mode +1)
+  (setq super-save-auto-save-when-idle t))
 
 ;; export package
 (provide 'cfg-utils)
