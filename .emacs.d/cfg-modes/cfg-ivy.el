@@ -52,9 +52,9 @@
   (ivy-posframe-min-height 10)
   :config
   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  (setq ivy-posframe-parameters '((parent-frame . nil)
-                                  (left-fringe . 10)
-                                  (right-fringe . 10)))
+  ;(setq ivy-posframe-parameters '((parent-frame . nil)
+  ;                                (left-fringe . 10)
+  ;                                (right-fringe . 10)))
   (ivy-posframe-mode 1))
 ;; export package
 (provide 'cfg-ivy)

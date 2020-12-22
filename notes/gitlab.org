@@ -29,3 +29,40 @@ block1:
     - script1
     - script2
 #+END_SRC
+
+
+* Setup gitlab-runner
+** add environment variable to use self-signed cert
+#+begin_src bash
+kb -n gitlab-managed-apps edit deployment runner-gitlab-runner
+#+end_src
+
+#+begin_src yaml
+environment:
+  - name: CI_SERVER_TLS_CA_FILE
+    value: /home/gitlab-runner/.gitlab-runner/certs/lbtran_com.crt
+
+volumes:
+- name: custom-certs
+  secret:
+    defaultMode: 420
+    secretName: internal-ca-chain-cert
+#+end_src
+
+
+* Build docker container
+#+begin_export yaml
+build:
+  stage: build
+  image: docker:stable
+  services:
+    # start docker service for building
+    - docker:18.09.7-dind  # we want this version
+  variables:
+    DOCKER_HOST: tcp://localhost:2375/ #  point to docker service
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - docker info
+  script:
+    - docker build .
+#+end_export
