@@ -21,6 +21,8 @@
 #+END_SRC
 
 * Types
+A value can be more than 1 type
+
 #+BEGIN_SRC bash
 `Some string "value"`: string literal
 
@@ -69,6 +71,8 @@ func foo(){
 
 ** Return a function
 #+BEGIN_SRC bash
+# func [name] func [return type]
+# func bar return a func that will return an int
 func bar() func() int {
     return func() int {
         return 123
@@ -77,6 +81,10 @@ func bar() func() int {
 #+END_SRC
 
 * Pointer
+- performance -> reuse same big data set
+- change a value
+Everything in go is passed by value
+
 #+BEGIN_SRC bash
 "&a": give address stores value of 'a', while '&a' has a type of '*[type]'
 "*a": dereference address -> give value stored in that address
@@ -121,6 +129,7 @@ func (b Bike) NumOfWheels() int {
     return b.wheels
 }
 
+// any type has NumOfwheels method is also Vehiclewithwheels type
 type VehicleWithWheels interface {
     NumOfWheels() int
 }
@@ -138,17 +147,3 @@ wg.Add(1)
 go someFunc() // add wg.Done() inside func
 wg.Wait()
 #+end_src
-
-qweqweqwe
-
-qweqweqwe
-
-qweqweqwe
-
-
-func test {
-
-func {}
-qweqweqwe
-
-qweqweqwe

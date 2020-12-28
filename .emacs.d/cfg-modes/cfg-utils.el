@@ -36,10 +36,10 @@
 (setq ring-bell-function 'ignore)
                                         ;
 ;; Transparent windows
-(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
-(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
-(set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;;(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+;;(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+;;(set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;
 ;; Copy and Paste

@@ -66,3 +66,15 @@ build:
   script:
     - docker build .
 #+end_export
+
+* Registrer runner
+instruction - https://gitlab.lbtran.com/root/house-and-rent/-/settings/ci_cd
+create tag for each runner
+to use specific runner for the job
+#+begin_src yaml
+buid:
+  tags:
+    - aws << tag
+  script:
+    - /bin/true
+#+end_src
