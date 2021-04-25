@@ -69,6 +69,7 @@
 (require 'cfg-dockerfile)
 (require 'cfg-smartparens)
 (require 'cfg-terraform)
+(require 'cfg-js)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -79,7 +80,7 @@
    '("27a1dd6378f3782a593cc83e108a35c2b93e5ecc3bd9057313e1d88462701fcd" default))
  '(helm-candidate-number-limit 10)
  '(package-selected-packages
-   '(hcl-mode dockerfile-mode python-mode go-mode yaml-mode web-mode prettier-js js2-mode company yasnippet flycheck doom-modeline minions diminish dumb-jump rainbow-delimiters git-gutter git-link magit visual-fill-column use-package org-bullets moe-theme helm-projectile evil doom-themes)))
+   '(exec-path-from-shell rjsx-mode hcl-mode dockerfile-mode python-mode go-mode yaml-mode web-mode prettier-js js2-mode company yasnippet flycheck doom-modeline minions diminish dumb-jump rainbow-delimiters git-gutter git-link magit visual-fill-column use-package org-bullets moe-theme helm-projectile evil doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

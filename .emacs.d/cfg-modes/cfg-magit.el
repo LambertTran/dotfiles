@@ -21,18 +21,18 @@
 (global-set-key (kbd "C-c l") 'git-link)
 
 ;; show changes in buffer
-(use-package git-gutter
-  :ensure t
-  :diminish
-  :hook ((text-mode . git-gutter-mode)
-         (prog-mode . git-gutter-mode))
-  :config
-  (setq git-gutter:update-interval 2)
-  (set-face-background 'git-gutter:added "blue") ;; background color
-  (set-face-foreground 'git-gutter:added "white")
-  (set-face-foreground 'git-gutter:modified "LightGoldenrod")
-  (set-face-foreground 'git-gutter:deleted "LightCoral")
-  )
+;;(use-package git-gutter
+;;  :ensure t
+;;  :diminish
+;;  :hook ((text-mode . git-gutter-mode)
+;;         (prog-mode . git-gutter-mode))
+;;  :config
+;;  (setq git-gutter:update-interval 2)
+;;  (set-face-background 'git-gutter:added "blue") ;; background color
+;;  (set-face-foreground 'git-gutter:added "white")
+;;  (set-face-foreground 'git-gutter:modified "LightGoldenrod")
+;;  (set-face-foreground 'git-gutter:deleted "LightCoral")
+;;  )
 
 ;; export package
 (provide 'cfg-magit)

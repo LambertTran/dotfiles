@@ -4,7 +4,7 @@
 
 ;; Set the fixed pitch face
 ;;(set-face-attribute 'default t :font "-outline-Monaco-normal-normal-normal-mono-18-*-*-*-c-*-iso8859-1")
-(set-frame-font "Monaco 15" nil t)
+(set-frame-font "Monaco 17" nil t)
 
 ;;(use-package powerline
 ;;  :ensure t

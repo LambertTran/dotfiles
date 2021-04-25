@@ -118,6 +118,7 @@ helm install kibana elastic/kibana -f kibana-values.yaml
          path: /var/log/containers
 #+END_SRC
 
+
 * Volume
 ** PVC
 - Available storage option that pod can request/claim
@@ -132,8 +133,12 @@ ReadWriteMany: can be read and written to by many nodes
 ** PV
 - Actual persistent volume that storage provisioner can provide base on PVC
 
+
 * Secrets
 - A secret can store many key/value pair
 #+begin_src bash
 kubectl create secret generic [secretname] --from-literal [key]=[value] [key]=[value]
 #+end_src
+
+* CLI tool
+https://k9scli.io/

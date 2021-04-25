@@ -38,3 +38,27 @@ aws ec2 describe-instances --filter Name=instance-id,Values=* --query "Reservati
 3. Mount Volume: sudo mount /dev/xfvc [dir]
 #+END_SRC
 
+* Backup & Restore EBS
+1. stop instance
+2. create snapshot
+3. create volume from snapshot
+4. mount newly created volume to new instance
+#+BEGIN_SRC bash
+[ec2-user@ip-10-100-1-69 opt]$ lsblk
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0   8G  0 disk
+└─xvda1 202:1    0   8G  0 part /
+xvdf    202:80   0   8G  0 disk
+
+[ec2-user@ip-10-100-1-69 opt]$ sudo mount /dev/xvdf lb
+
+[ec2-user@ip-10-100-1-69 opt]$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        482M     0  482M   0% /dev
+tmpfs           492M     0  492M   0% /dev/shm
+tmpfs           492M  428K  492M   1% /run
+tmpfs           492M     0  492M   0% /sys/fs/cgroup
+/dev/xvda1      8.0G  1.8G  6.3G  23% /
+tmpfs            99M     0   99M   0% /run/user/1000
+/dev/xvdf       7.9G   37M  7.4G   1% /opt/lb
+#+END_SRC

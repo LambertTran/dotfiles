@@ -86,3 +86,10 @@ gpg --decrypt <encrypted file>
 [comand] | tee -a $(data +%F).log
 EXIT_CODE=${PIPESTATUS[0]}
 #+end_src
+
+* Extend volume centos
+#+begin_src bash
+parted ---pretend-input-tty /dev/sda resizepart 2 100%
+partx -u /dev/sda; pvresize /dev/sda2
+lvextend -r centos/root /dev/sda2
+#+end_src
