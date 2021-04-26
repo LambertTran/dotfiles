@@ -140,5 +140,23 @@ ReadWriteMany: can be read and written to by many nodes
 kubectl create secret generic [secretname] --from-literal [key]=[value] [key]=[value]
 #+end_src
 
+
 * CLI tool
 https://k9scli.io/
+
+
+* Default ingress TLS
+#+begin_src yaml
+    spec:
+      containers:
+      - args:
+        - /nginx-ingress-controller
+        - --publish-service=$(POD_NAMESPACE)/ingress-nginx-controller
+        - --default-ssl-certificate=ingress-controller/dev-lbtran-com
+        - --election-id=ingress-controller-leader
+        - --ingress-class=nginx
+        - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller
+        - --validating-webhook=:8443
+        - --validating-webhook-certificate=/usr/local/certificates/cert
+        - --validating-webhook-key=/usr/local/certificates/key
+#+end_src
