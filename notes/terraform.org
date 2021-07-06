@@ -24,3 +24,9 @@ data.terraform_remote_state.this.outputs.[some attribute]
 #+begin_src terraform
 current_dir = basename(dirname(path.cwd))
 #+end_src
+
+* Fix Invliad Legacy Provider
+#+begin_src bash
+terraform state replace-provider "registry.terraform.io/-/aws" "hashicorp/aws"
+terraform state replace-provider "registry.terraform.io/-/helm" "hashicorp/helm"
+#+end_src

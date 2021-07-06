@@ -146,6 +146,14 @@ https://k9scli.io/
 
 
 * Default ingress TLS
+** Create secret
+#+begin_src
+kb -n ingress-nginx create secret tls star-nkdang-com \
+--cert=/opt/lb/tools/certs/hosts/nkdang/star-nkdang-com-full-chain.pem \
+--key=/opt/lb/tools/certs/hosts/nkdang/star-nkdang-com-private-key.pem
+#+end_src
+
+** Set default secret
 #+begin_src yaml
     spec:
       containers:
