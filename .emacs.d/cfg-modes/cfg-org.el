@@ -6,6 +6,8 @@
 (defun org-mode-setup ()
   (org-indent-mode)
   (variable-pitch-mode 1)
+  (set-face-foreground 'org-block-begin-line "#4e4e4e")
+  (set-face-background 'org-block-begin-line "#3a3a3a")
   )
 
 
@@ -54,5 +56,6 @@
       org-edit-src-content-indentation 0
       org-src-tab-acts-natively t
       org-startup-indented t)
+
 
 (provide 'cfg-org)
